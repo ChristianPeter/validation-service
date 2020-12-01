@@ -1,0 +1,11 @@
+POST http://localhost:8080/phone/validate-number
+Content-Type: application/json
+
+{
+    "country" : "DE",
+    "number" : "06933452134"
+}
+
+###
+
+GET http://localhost:8080/phone/demo

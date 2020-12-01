@@ -5,4 +5,5 @@ public class PhoneConversionResponse {
     public boolean isValid;
     public String country;
     public String format;
+    public String message;
 }

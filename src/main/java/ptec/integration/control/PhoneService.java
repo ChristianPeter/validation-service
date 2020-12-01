@@ -18,15 +18,22 @@ public class PhoneService {
         
         try {
             PhoneNumber parsed = p.parse(validationRequest.number, validationRequest.country);
+            PhoneValidationResponse response = PhoneValidationResponse.of(validationRequest);
+            response.isValid = p.isValidNumber(parsed);
+            return Mono.just(response);
         } catch (NumberParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            PhoneValidationResponse error = PhoneValidationResponse.of(validationRequest);
+            error.isValid = false;
+            error.message = e.getMessage();
+            
+            return Mono.just(error);
         }
 
         
 
 
-		return null;
 	}
     
 }

@@ -23,12 +23,12 @@ public class PhoneResource {
     @Inject
     PhoneService phoneService;
 
-    @Post(processes =MediaType.APPLICATION_JSON)
+    @Post(uris = {"/validate-number"}, processes = MediaType.APPLICATION_JSON)
     public Mono<PhoneValidationResponse> validatePhone(@Body PhoneValidationRequest validationRequest) {
         return phoneService.validatePhone(validationRequest);
     }
     
-    @Get(processes = MediaType.TEXT_PLAIN)
+    @Get(uris = {"/demo"})
     public String hello() {
         String swissNumberStr = "044 668 18 00";
         PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
